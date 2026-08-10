@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-from src.data_utils import DATASET_PATH, MODEL_PATH, MODELS_DIR, ensure_dataset, load_metadata
+from src.data_utils import MODEL_PATH, MODELS_DIR, ensure_dataset, load_metadata
 from src.training import train_and_compare_models
 
 
@@ -44,12 +44,34 @@ def main():
     model = load_model()
     comparison_df = load_comparison()
     metadata = load_metadata()
+    best_model_name = metadata.get("best_model_name", comparison_df.iloc[0]["Model"] if not comparison_df.empty else "N/A")
+    best_row = comparison_df.iloc[0].to_dict() if not comparison_df.empty else {}
 
     st.set_page_config(page_title="House Price Prediction", page_icon="🏠", layout="wide")
-    st.title("🏠 House Price Prediction Dashboard")
-    st.caption("Predict real-estate prices from the California housing dataset.")
+    st.title("🏠 House Price Prediction")
+    st.caption("Portfolio-ready machine learning project for estimating California house values from property attributes.")
 
-    overview_tab, predict_tab, compare_tab = st.tabs(["Overview", "Predict Price", "Model Comparison"])
+    with st.sidebar:
+        st.header("Project Overview")
+        st.markdown(
+            """
+            This dashboard uses a real California housing dataset and a trained regression model
+            to estimate a home's market price from input features such as median income,
+            house age, occupancy, and location.
+            """
+        )
+        st.info(f"Best model: **{best_model_name}**")
+        st.metric("Dataset rows", len(df))
+        st.metric("Target variable", "price")
+        if best_row:
+            st.metric("Best RMSE", f"{best_row.get('RMSE', 0):,.2f}")
+
+    overview_tab, data_tab, predict_tab, compare_tab = st.tabs([
+        "Project Overview",
+        "Dataset Insights",
+        "Predict Price",
+        "Model Performance",
+    ])
 
     with overview_tab:
         col1, col2, col3 = st.columns(3)
@@ -58,8 +80,18 @@ def main():
         with col2:
             st.metric("Average Price", format_currency(df["price"].mean()))
         with col3:
-            st.metric("Best Model", metadata.get("best_model_name", "N/A"))
+            st.metric("Best Model", best_model_name)
 
+        st.subheader("Business Value")
+        st.markdown(
+            """
+            This project demonstrates how machine learning can support real-estate valuation, pricing intelligence,
+            and quick market screening using structured property features. It is suitable for student portfolios,
+            academic presentations, and model-demonstration interviews.
+            """
+        )
+
+    with data_tab:
         st.subheader("Price Distribution")
         price_hist = px.histogram(df, x="price", nbins=30, title="House Price Distribution")
         st.plotly_chart(price_hist, width="stretch")
@@ -71,7 +103,7 @@ def main():
                 df,
                 x="median_income",
                 y="price",
-                title="Income vs House Price",
+                title="Median Income vs House Price",
                 opacity=0.7,
             )
             st.plotly_chart(scatter, width="stretch")

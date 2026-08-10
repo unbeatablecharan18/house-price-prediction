@@ -11,8 +11,22 @@ __pycache__/
 
 # Local tooling/cache
 .streamlit/
+.streamlit/**
 .pytest_cache/
 .mypy_cache/
+.ipynb_checkpoints/
+
+# Secrets and credentials
+.env
+.env.*
+secrets.toml
+*.pem
+*.key
+
+# Model artifacts kept local only
+models/*.pkl
+models/*.joblib
+models/*.h5
 
 # OS/editor noise
 .DS_Store
@@ -20,5 +34,3 @@ Thumbs.db
 
 # Optional local runtime files
 *.log
-
-models/*.pkl
