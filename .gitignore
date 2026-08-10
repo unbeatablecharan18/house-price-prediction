@@ -1,0 +1,22 @@
+.meta-panel-trigger
+meta.bat
+
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local tooling/cache
+.streamlit/
+.pytest_cache/
+.mypy_cache/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+
+# Optional local runtime files
+*.log

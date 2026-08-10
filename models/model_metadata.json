@@ -1,0 +1,20 @@
+{
+  "best_model_name": "Extra Trees",
+  "metrics": {
+    "Model": "Extra Trees",
+    "MAE": 32492.4635251938,
+    "RMSE": 50132.81688320885,
+    "R2": 0.8082049672752383
+  },
+  "numeric_columns": [
+    "median_income",
+    "house_age",
+    "average_rooms",
+    "average_bedrooms",
+    "population",
+    "average_occupancy",
+    "latitude",
+    "longitude"
+  ],
+  "categorical_columns": []
+}
