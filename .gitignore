@@ -20,3 +20,5 @@ Thumbs.db
 
 # Optional local runtime files
 *.log
+
+models/*.pkl
