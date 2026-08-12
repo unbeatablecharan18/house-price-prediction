@@ -8,6 +8,46 @@ House price prediction is a classic supervised learning problem with strong prac
 
 The application predicts the estimated price of a property based on user-entered house characteristics and allows the user to compare model performance using a set of standard regression metrics. The result is a clean end-to-end ML portfolio project that is easy to explain during academic or interview presentations.
 
+## 📸 Project Screenshots
+
+### 🏠 Project Overview
+
+The dashboard provides a high-level overview of the California Housing dataset and highlights the best-performing machine learning model.
+
+![Project Overview](screenshots/project-overview.png)
+
+---
+
+### 📊 Dataset Insights
+
+Interactive visualizations explore house-price distribution and relationships between important property features and house prices.
+
+![Dataset Insights](screenshots/dataset-insights.jpeg)
+
+---
+
+### 🤖 Model Performance
+
+Multiple regression models are evaluated using MAE, RMSE, and R² to identify the best-performing approach.
+
+![Model Performance](screenshots/model-performance.jpeg)
+
+**Best Model:** Extra Trees Regressor
+**R²:** 0.8082
+**RMSE:** $50,132.82
+**MAE:** $32,492.46
+
+---
+
+### 🎯 House Price Prediction
+
+The application accepts property attributes and uses the trained machine learning model to estimate the house price.
+
+![House Price Prediction](screenshots/prediction-result.jpeg)
+
+**Example Prediction:** **$440,162.04**
+
+
 ## Features
 
 The project currently includes the following implemented features:
