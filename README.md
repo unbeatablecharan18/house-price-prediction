@@ -22,7 +22,7 @@ The dashboard provides a high-level overview of the California Housing dataset a
 
 Interactive visualizations explore house-price distribution and relationships between important property features and house prices.
 
-![Dataset Insights](screenshots/dataset-insights.jpeg)
+![Dataset Insights](screenshots/dataset-insights.png)
 
 ---
 
